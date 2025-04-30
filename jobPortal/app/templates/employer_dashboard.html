@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Post a Job</h2>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">{{ form.title.label }} {{ form.title(class="form-control") }}</div>
+    <div class="mb-3">{{ form.description.label }} {{ form.description(class="form-control") }}</div>
+    <div class="mb-3">{{ form.salary.label }} {{ form.salary(class="form-control") }}</div>
+    <div class="mb-3">{{ form.location.label }} {{ form.location(class="form-control") }}</div>
+    <button type="submit" class="btn btn-success">{{ form.submit.label }}</button>
+  </form>
+
+  <hr>
+  <h3>Your Job Listings</h3>
+  {% for job in jobs %}
+    <div class="card my-2">
+      <div class="card-body">
+        <h5>{{ job.title }}</h5>
+        <p>{{ job.description }}</p>
+        <small>{{ job.location }} | ₹{{ job.salary }}</small>
+      </div>
+    </div>
+  {% else %}
+    <p>No jobs posted yet.</p>
+  {% endfor %}
+{% endblock %}

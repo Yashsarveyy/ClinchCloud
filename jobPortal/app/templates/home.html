@@ -1,0 +1,16 @@
+
+{% extends 'base.html' %}
+{% block content %}
+  <h2 class="mb-4">Available Jobs</h2>
+  {% for job in jobs %}
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5>{{ job.title }}</h5>
+        <p>{{ job.description }}</p>
+        <small class="text-muted">{{ job.location }} | ₹{{ job.salary }}</small>
+      </div>
+    </div>
+  {% else %}
+    <p>No jobs available.</p>
+  {% endfor %}
+{% endblock %}
